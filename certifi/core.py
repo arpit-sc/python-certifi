@@ -10,6 +10,5 @@ import os
 
 
 def where():
-    f = os.path.dirname(__file__)
-
-    return os.path.join(f, 'cacert.pem')
+    reader = __loader__.get_resource_reader(__name__)
+    return reader.open_resource('cacert.pem')
