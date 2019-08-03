@@ -10,5 +10,10 @@ import os
 
 
 def where():
-    reader = __loader__.get_resource_reader(__name__)
-    return reader.open_resource('cacert.pem')
+    import importlib.resources
+    with importlib.resources.open_binary(__name__, 'cacert.pem') as fh:
+        data = fh.read()
+    return data
+        
+#     reader = __loader__.get_resource_reader(__name__)
+#     return reader.open_resource('cacert.pem')
